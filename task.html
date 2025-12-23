@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="uk">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Фінальний шкільний проєкт з інформатики: Сучасні інформаційні технології (10 клас).">
+  <title>Самостійне • Сучасні ІТ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="scanlines" aria-hidden="true"></div>
+
+<div class="shell">
+  <aside class="sidebar" id="sidebar" aria-label="Меню">
+    <div class="brand">
+      <div class="logo" aria-hidden="true"></div>
+      <div>
+        <b>Сучасні ІТ</b>
+        <small>Навчальний сайт • 10 клас • Інформатика</small>
+      </div>
+    </div>
+
+    <div class="badge"><span class="dot"></span> Автор: <b style="color:var(--ink)">Биков Микита</b></div>
+
+    <nav class="nav" aria-label="Навігація">
+      <a href="index.html">Головна</a>
+      <a href="theory.html">Інформація</a>
+      <a href="practice.html">Практичне завдання</a>
+      <a href="task.html">Популярні запитання</a>
+      <a href="quiz.html">Тести</a>
+      <a href="sources.html">Джерела</a>
+    </nav>
+
+    <div class="side-tools">
+      <button class="btn neon" onclick="location.href='practice.html'">Почати з практики</button>
+      <button class="btn" onclick="window.scrollTo({top:0,behavior:'smooth'})">Вгору</button>
+      <div class="badge" title="Підказка для оцінювання">
+        CSS анімації ✓ • JS (DOM) ✓
+      </div>
+    </div>
+  </aside>
+
+  <div class="main">
+    <div class="container">
+      <div class="topbar">
+        <button class="kebab" id="menuBtn">☰ Меню</button>
+      </div>
+
+      
+
+
+  <h2>Контрольні питання</h2>
+
+  <div class="panel" style="box-shadow:none">
+    <details><summary>1. Що таке сучасні інформаційні технології? <span class="chev"></span></summary><p class="muted">Методи та засоби для збору, зберігання, обробки, передачі й захисту інформації.</p></details>
+    <hr class="sep">
+    <details><summary>2. Які переваги хмарних сервісів? <span class="chev"></span></summary><p class="muted">Доступ з різних пристроїв, спільна робота, резервні копії, масштабованість.</p></details>
+    <hr class="sep">
+    <details><summary>3. Які ризики під час роботи онлайн? <span class="chev"></span></summary><p class="muted">Фішинг, витік даних, шкідливе ПЗ, слабкі паролі.</p></details>
+    <hr class="sep">
+    <details><summary>4. Що таке 2FA і навіщо вона потрібна? <span class="chev"></span></summary><p class="muted">Додатковий рівень захисту: пароль + другий фактор (код/додаток).</p></details>
+    <hr class="sep">
+    <details><summary>5. Наведіть приклади IoT. <span class="chev"></span></summary><p class="muted">Розумні лампи, датчики, камери, смарт‑годинники.</p></details>
+    <hr class="sep">
+    <details><summary>6. Як правильно робити резервні копії? <span class="chev"></span></summary><p class="muted">Зберігати копії на іншому носії/в хмарі, регулярно оновлювати, перевіряти відновлення.</p></details>
+    <hr class="sep">
+    <details><summary>7. Що таке шифрування? <span class="chev"></span></summary><p class="muted">Перетворення даних у вигляд, який неможливо прочитати без ключа.</p></details>
+    <hr class="sep">
+    <details><summary>8. Які етичні правила використання AI в навчанні? <span class="chev"></span></summary><p class="muted">Не видавати чужу роботу за свою, перевіряти факти, використовувати як помічник для пояснень і тренування.</p></details>
+  </div>
+</section>
+
+
+      <footer class="footer">
+        <div>© 2025 • Фінальний проєкт • 10 клас • «Сучасні інформаційні технології»</div>
+      </footer>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="imgModal" aria-hidden="true">
+  <div class="box" role="dialog" aria-modal="true" aria-label="Перегляд зображення">
+    <div class="top">
+      <div id="imgModalTitle" class="muted">Скріншот</div>
+      <button class="btn" id="imgModalClose">Закрити</button>
+    </div>
+    <img id="imgModalImg" alt="">
+  </div>
+</div>
+
+<div id="scrim" aria-hidden="true"></div>
+
+<script src="app.js"></script>
+<script>
+  // lightweight scrim for mobile menu
+  (function(){
+    const side=document.getElementById("sidebar");
+    const btn=document.getElementById("menuBtn");
+    const scr=document.getElementById("scrim");
+    if(!side||!scr||!btn) return;
+    scr.style.position="fixed";
+    scr.style.inset="0";
+    scr.style.background="rgba(0,0,0,.55)";
+    scr.style.zIndex="40";
+    scr.style.opacity="0";
+    scr.style.pointerEvents="none";
+    scr.style.transition="opacity .2s ease";
+    const sync=()=>{
+      const open = side.classList.contains("open");
+      scr.style.opacity = open ? "1" : "0";
+      scr.style.pointerEvents = open ? "auto" : "none";
+    };
+    const obs=new MutationObserver(sync);
+    obs.observe(side,{attributes:true,attributeFilter:["class"]});
+    scr.addEventListener("click", ()=>{ side.classList.remove("open"); sync(); });
+    sync();
+  })();
+</script>
+</body>
+</html>
